@@ -1,4 +1,4 @@
-// alert("Extenal js");
+ alert("Extenal js");
 
 var a = 21;
 let str = "Vineeth";
