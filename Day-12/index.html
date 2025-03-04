@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom-2-js</title>
+</head>
+
+<body>
+
+    <h1 id="head">Vineeth Kumar </h1>
+
+    <div id="container">
+        <p class="para"> This is paragraph-1</p>
+        <p id="sec-para"> This is paragraph-2</p>
+        <p class="para"> This is paragraph-3</p>
+        <p class="para"> This is paragraph-4</p>
+    </div>
+
+
+    <script>
+        //1) 
+        let h1Element = document.getElementById("head")
+        console.log(h1Element)
+        h1Element.style.backgroundColor = "yellow"
+        h1Element.style.textAlign = " center"
+
+        // 2) .  
+
+        let paraElement = document.getElementsByClassName("para")
+        console.log(paraElement)
+
+
+        // 3) 
+
+        h1Element.innerText = "Mudham Vineeth Kumar"
+
+        // 4) 
+        let containerElement = document.getElementById("container")
+
+        console.log(containerElement)
+
+        let paraFifthElement = document.createElement("p")
+        paraFifthElement.innerText = "This is fifth paragrqaph -56"
+        // paraFifthElement.className = "para"
+
+        paraFifthElement.style.fontSize = "25px"
+        paraFifthElement.style.color = "red"
+
+
+
+        containerElement.appendChild(paraFifthElement)
+        console.log(containerElement)
+
+
+        //5 remove element 
+
+        let removeElement = document.getElementById("sec-para")
+        removeElement.remove();
+    </script>
+
+</body>
+
+</html>
