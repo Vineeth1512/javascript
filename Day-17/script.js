@@ -67,7 +67,7 @@
 // out: not a palandrome
 // inp:dad
 // out:it is a palandrome
-
+/*
 let userInput = prompt("Enter the value for palindorme")
   .toLowerCase()
   .trim()
@@ -82,3 +82,4 @@ if (userInput === palindrom) {
 } else {
   console.log("Not palindrome");
 }
+*/
