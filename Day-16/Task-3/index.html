@@ -6,16 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        button {
-            margin: 10px;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         input {
-            margin: 10px;
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
 
         p {
-            display: none
+            display: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #match {
+            color: green;
+        }
+
+        #unmatch {
+            color: red;
         }
     </style>
 </head>
@@ -27,8 +72,8 @@
         <input type="email" id="email" placeholder="Enter your mail"> -->
         <input type="text" id="password" placeholder="Enter your password"> <br>
         <input type="text" id="confirmPassword" placeholder="Enter confirm password"> <br>
-        <p id="match">Passwos is matched</p>
-        <p id="unmatch"> Password does not mathced</p>
+        <p id="match">Passwords are matched</p>
+        <p id="unmatch"> Passwords are do not matched</p>
 
         <button> click </button>
 
