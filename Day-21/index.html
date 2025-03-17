@@ -90,6 +90,20 @@
             color: #f39c12;
             font-weight: 600;
         }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 
@@ -351,18 +365,26 @@
         console.log(container);
         let card = dummyArray.map((card) => {
             return container.innerHTML += `
-            <div class="card">
+            <div class="card" id = "card-${card.id}">
             <img src="${card.image}" alt="Product Image">
             <div class="card-content">
                 <div class="card-title">${card.title}</div>
                 <div class="card-description">${card.description}</div>
                 <div class="card-category">Category: ${card.category}</div>
-                <div class="card-price">${card.price}</div>
+                <div class="card-price">$${card.price}</div>
                 <div class="card-rating">⭐ ${card.rating.rate} (${card.rating.count} reviews)</div>
+                <button class="delete-btn" onclick="deleteCard('${card.id}')">Delete</button>
             </div>
         </div>
             `
         })
+
+        function deleteCard(cardId) {
+            const cardElement = document.getElementById(`card-${cardId}`);
+            if (cardElement) {
+                cardElement.remove();
+            }
+        }
 
 
 
