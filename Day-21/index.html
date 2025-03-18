@@ -387,7 +387,8 @@
         function deleteCard(cardId) {
             const cardElement = document.getElementById(`card-${cardId}`);
             if (cardElement) {
-                cardElement.remove();
+                if (confirm("Are you sure you want to delete this card?"))
+                    cardElement.remove();
             }
         }
 
