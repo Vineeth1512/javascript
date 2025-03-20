@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let parent = document.createElement("div")
+        let child1 = document.createElement("div")
+        let imge = document.createElement("img")
+        let title = document.createElement("h4")
+        let price = document.createElement("p")
+        let des = document.createElement("p")
+        let cate = document.createElement("p")
+        let rate = document.createElement("p")
+
+        child1.append(imge, title, price, des, cate, rate)
+        parent.append(child1)
+        //   document.body.append(parent)
+        console.log(parent)
+    </script>
+</body>
+
+</html>
