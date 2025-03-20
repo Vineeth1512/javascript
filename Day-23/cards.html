@@ -61,22 +61,28 @@
         let container = document.createElement("div");
         container.classList.add("container")
 
-        let usersData = JSON.parse(localStorage.getItem("usersData"))
+        let usersData = JSON.parse(localStorage.getItem("usersData")) || []
+
+        console.log((usersData.length));
+
+        if (usersData.length === 0) {
 
 
+            container.innerHTML = "<p>No users found. Please add users.</p>"
+        } else {
 
-
-        usersData.forEach((user) => {
-            container.innerHTML += `
+            usersData.forEach((user) => {
+                container.innerHTML += `
             <div class="card">
             <h2>Name: ${user.name}</h2>
             <p>Email: ${user.email}</p>
         </div>
             `
-        })
+            })
 
+
+        }
         document.body.append(container)
-
     </script>
 </body>
 
