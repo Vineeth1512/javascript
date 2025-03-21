@@ -94,15 +94,17 @@
                 email: emailInput.value
             }
 
+            if (userInputElement.value == "" || emailInput.value == "") {
+                alert("please enter the data")
+                return
+            }
+
 
             userData.push(details)
             localStorage.setItem("usersData", JSON.stringify(userData))
 
 
-            if (userInputElement.value == "" || emailInput.value == "") {
-                alert("please enter the data")
-                return
-            }
+
 
             alert("succesfully submitted your data")
             userInputElement.value = "";
