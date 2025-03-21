@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo"><a href="index.html">My Shop</a></div>
+
+        <div class="categories">
+            <select>
+                <option>All Categories</option>
+                <option>Men's Clothing</option>
+                <option>Women's Clothing</option>
+                <option>Jewelery</option>
+                <option>Electronics</option>
+            </select>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+        </div>
+
+        <!-- Cart Icon with Count -->
+        <div class="cart-container">
+            <a style="text-decoration: none;" href="add-cards.html"> <span class="cart-icon">🛒</span></a>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <div class="container">
+
+    </div>
+
+</body>
+
+<script>
+
+    let cardsData = JSON.parse(localStorage.getItem("addToCards")) || []
+
+    let count = document.querySelector(".cart-count")
+    count.innerHTML = cardsData.length
+
+
+    let container = document.querySelector(".container")
+
+
+    let card = cardsData.forEach((card, index) => {
+        const cardWrap = document.createElement("div")
+        cardWrap.classList.add("card")
+
+        const imageElement = document.createElement("img")
+        imageElement.src = card.image
+
+        const cardContent = document.createElement("div")
+        cardContent.className = "card-content";
+
+        const cardTitle = document.createElement("div")
+        cardTitle.className = "card-title"
+        cardTitle.innerText = card.title
+
+        const cardDescription = document.createElement("div")
+        cardDescription.classList.add("card-description")
+        cardDescription.innerText = card.description
+        
+        const maxLength = 150; // Adjust based on content
+        cardDescription.innerText = card.description.length > maxLength
+            ? card.description.substring(0, maxLength) + "..."
+            : card.description;
+
+        const cardCategory = document.createElement("div")
+        cardCategory.className = "card-category"
+        cardCategory.innerHTML = `Category: ${card.category}`
+
+        const cardPrice = document.createElement("div")
+        cardPrice.className = "card-price"
+        cardPrice.innerHTML = `$${card.price}`
+
+        const cardRating = document.createElement("div")
+        cardRating.className = "card-rating"
+        cardRating.innerHTML = `⭐ ${card.rating.rate} (${card.rating.count} reviews)`
+
+        const addToCartBtn = document.createElement("div")
+        addToCartBtn.className = "detete-btn"
+        addToCartBtn.innerText = "Delete"
+        addToCartBtn.addEventListener("click", () => {
+            if (confirm("Are you sure to detele this product")) {
+                cardsData.splice(index, 1);
+                localStorage.setItem("addToCards", JSON.stringify(cardsData));
+                const cardCount = document.querySelector(".cart-count")
+
+
+                cardCount.innerHTML = cardsData.length
+
+                // Refresh the UI
+                cardWrap.remove();
+
+            }
+
+
+
+
+        })
+
+
+
+
+
+
+        cardContent.append(cardTitle, cardDescription, cardCategory, cardPrice, cardRating, addToCartBtn)
+        cardWrap.append(imageElement, cardContent)
+        container.append(cardWrap)
+
+
+    })
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+/* Header Styles */
+.header {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 20px;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.categories {
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.categories select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  width: 200px;
+}
+
+/* Cart Icon */
+.cart-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cart-icon {
+  font-size: 24px;
+  color: #e74c3c;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+/* Product Cards */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-category {
+  font-size: 13px;
+  color: #888;
+  background: #ffeaa7;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.card-rating {
+  font-size: 14px;
+  color: #f39c12;
+  font-weight: 600;
+}
+.detete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.delete-btn:hover {
+  background-color: darkred;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.addtocart-btn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.addtocart-btn:hover {
+  background-color: darkblue;
+}
