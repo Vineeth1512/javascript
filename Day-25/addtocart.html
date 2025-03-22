@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let parent = document.getElementById("product-list");
+        data.map((val) => {
+            let child = document.createElement("div");
+            child.className = "card";
+
+            let image = document.createElement("img");
+            let title = document.createElement("h3");
+            let price = document.createElement("p");
+            let rating = document.createElement("p");
+            let category = document.createElement("p");
+            let btn = document.createElement("button");
+
+            btn.innerText = "Add to Cart";
+            btn.addEventListener("click", (val) => {
+
+                console.log(val)
+                cart.push(val)
+                console.log((cart));
+
+            })
+
+            price.innerText = `Price: $${val.price}`;
+            title.innerText = val.title;
+            image.src = val.image;
+            rating.innerHTML = `Rating: ${val.rating.rate} ⭐ (${val.rating.count} reviews)`;
+            category.innerText = `Category: ${val.category}`;
+
+            child.append(image, title, price, rating, category, btn);
+            parent.append(child);
+        });
+    </script>
+</body>
+
+</html>

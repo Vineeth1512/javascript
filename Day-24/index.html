@@ -15,12 +15,12 @@
         <div class="logo"><a href="index.html">My Shop</a></div>
 
         <div class="categories">
-            <select>
+            <select id="select-categories">
                 <option>All Categories</option>
-                <option>Men's Clothing</option>
-                <option>Women's Clothing</option>
-                <option>Jewelery</option>
-                <option>Electronics</option>
+                <option value="Men's Clothing">Men's Clothing</option>
+                <option value="Women's Clothing">Women's Clothing</option>
+                <option value="Jewelery">Jewelery</option>
+                <option value="Electronics">Electronics</option>
             </select>
         </div>
 
@@ -288,83 +288,87 @@
                     }
                 }
             ]
+        let selectCategory = document.querySelector("#select-categories")
+        selectCategory.addEventListener("change", filterByCategory)
+        function filterByCategory() {
+            let optionElement = selectCategory.value.toLowerCase()
+
+            const filterProducts = optionElement === "all categories" ? dummyArray :
+                dummyArray.filter((procduct) => procduct.category == optionElement)
+
+            displayCards(filterProducts)
+        }
 
         let localCards = JSON.parse(localStorage.getItem("addToCards")) || []
         let count = document.querySelector(".cart-count")
         count.innerHTML = localCards.length
-
         let container = document.querySelector(".container")
 
 
-        let card = dummyArray.forEach((card) => {
-            const cardWrap = document.createElement("div")
-            cardWrap.classList.add("card")
 
-            const imageElement = document.createElement("img")
-            imageElement.src = card.image
+        function displayCards(dummyArray) {
+            container.innerHTML = "";
+            dummyArray.forEach((card) => {
+                const cardWrap = document.createElement("div")
+                cardWrap.classList.add("card")
 
-            const cardContent = document.createElement("div")
-            cardContent.className = "card-content";
+                const imageElement = document.createElement("img")
+                imageElement.src = card.image
 
-            const cardTitle = document.createElement("div")
-            cardTitle.className = "card-title"
-            cardTitle.innerText = card.title
+                const cardContent = document.createElement("div")
+                cardContent.className = "card-content";
 
-            const cardDescription = document.createElement("div")
-            cardDescription.classList.add("card-description")
-            cardDescription.innerText = card.description
-            const maxLength = 150; // Adjust based on content
-            cardDescription.innerText = card.description.length > maxLength
-                ? card.description.substring(0, maxLength) + "..."
-                : card.description;
+                const cardTitle = document.createElement("div")
+                cardTitle.className = "card-title"
+                cardTitle.innerText = card.title
 
-
-            const cardCategory = document.createElement("div")
-            cardCategory.className = "card-category"
-            cardCategory.innerHTML = `Category: ${card.category}`
-
-            const cardPrice = document.createElement("div")
-            cardPrice.className = "card-price"
-            cardPrice.innerHTML = `$${card.price}`
-
-            const cardRating = document.createElement("div")
-            cardRating.className = "card-rating"
-            cardRating.innerHTML = `⭐ ${card.rating.rate} (${card.rating.count} reviews)`
-
-            const addToCartBtn = document.createElement("div")
-            addToCartBtn.className = "addtocart-btn"
-            addToCartBtn.innerText = "Add to Cart"
+                const cardDescription = document.createElement("div")
+                cardDescription.classList.add("card-description")
+                cardDescription.innerText = card.description
+                const maxLength = 150; // Adjust based on content
+                cardDescription.innerText = card.description.length > maxLength
+                    ? card.description.substring(0, maxLength) + "..."
+                    : card.description;
 
 
-            addToCartBtn.addEventListener("click", () => {
-                console.log(card);
-                const cardsData = JSON.parse(localStorage.getItem("addToCards")) || []
-                cardsData.push(card)
-                const cardCount = document.querySelector(".cart-count")
-                cardCount.innerHTML = cardsData.length
+                const cardCategory = document.createElement("div")
+                cardCategory.className = "card-category"
+                cardCategory.innerHTML = `Category: ${card.category}`
 
-                alert(`${card.title} added successfully `)
-                localStorage.setItem("addToCards", JSON.stringify(cardsData))
+                const cardPrice = document.createElement("div")
+                cardPrice.className = "card-price"
+                cardPrice.innerHTML = `$${card.price}`
 
+                const cardRating = document.createElement("div")
+                cardRating.className = "card-rating"
+                cardRating.innerHTML = `⭐ ${card.rating.rate} (${card.rating.count} reviews)`
 
+                const addToCartBtn = document.createElement("div")
+                addToCartBtn.className = "addtocart-btn"
+                addToCartBtn.innerText = "Add to Cart"
 
+                addToCartBtn.addEventListener("click", () => {
+                    console.log(card);
+                    const cardsData = JSON.parse(localStorage.getItem("addToCards")) || []
+                    cardsData.push(card)
+                    const cardCount = document.querySelector(".cart-count")
+                    cardCount.innerHTML = cardsData.length
+
+                    alert(`${card.title} added successfully `)
+                    localStorage.setItem("addToCards", JSON.stringify(cardsData))
+
+                })
+
+                cardContent.append(cardTitle, cardDescription, cardCategory, cardPrice, cardRating, addToCartBtn)
+                cardWrap.append(imageElement, cardContent)
+                container.append(cardWrap)
             })
 
 
+        }
 
 
-
-
-            cardContent.append(cardTitle, cardDescription, cardCategory, cardPrice, cardRating, addToCartBtn)
-            cardWrap.append(imageElement, cardContent)
-            container.append(cardWrap)
-
-
-        })
-
-
-
-
+        displayCards(dummyArray)
 
 
 
